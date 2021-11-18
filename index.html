@@ -8,145 +8,145 @@
 </head>
 <body>
     <p>
-        1. Yacc program to recognize strings of {a^n b | n>=0}
-        LEX Code:
-        %{
-        /* Definition section */
-        #include "y.tab.h"
-        %}
-        /* Rule Section */
-        %%
-        [aA] {return A;}
-        [bB] {return B;}
-        \n {return NL;}
-        . {return yytext[0];}
-        %%
-        int yywrap()
-        {
-        return 1;
-        }
-
-        YACC Code:
-        %{
-        /* Definition section */
-        #include<stdio.h>
-        #include<stdlib.h>
-        %}
-        %token A B NL
-        /* Rule Section */
-        %%
-        stmt: S B NL {printf("valid string\n");
-            exit(0);}
-        ;
-        S: S A
-        |
-        ;
-        %%
-        int yyerror(char *msg)
-        {
-        printf("invalid string\n");
-        exit(0);
-        }
-        //driver code
-        main()
-        {
-        printf("enter the string\n");
-        yyparse();
-        }
-
-        <br> <br> <br>
-        2. Yacc program to recognize strings of {a^n b | n>=5}
-        LEX Code:
-        %{
-        /* Definition section */
-        #include "y.tab.h"
-        %}
-        /* Rule Section */
-        %%
-        [aA] {return A;}
-        [bB] {return B;}
-        \n {return NL;}
-        . {return yytext[0];}
-        %%
-        int yywrap()
-        {
-        return 1;
-        }
-
-        YACC Code:
-        %{
-        /* Definition section */
-        #include<stdio.h>
-        #include<stdlib.h>
-        %}
-        %token A B NL
-        /* Rule Section */
-        %%
-        stmt: A A A A A S B NL {printf("valid string\n");
-            exit(0);}
-        ;
-        S: S A
-        |
-        ;
-        %%
-        int yyerror(char *msg)
-        {
-        printf("invalid string\n");
-        exit(0);
-        }
-        //driver code
-        main()
-        {
-        printf("enter the string\n");
-        yyparse();
-        }
-
+        1. Yacc program to recognize strings of {a^n b | n>=0} <br>
+        LEX Code: <br>
+        %{<br>
+        /* Definition section */<br>
+        #include "y.tab.h"<br>
+        %}<br>
+        /* Rule Section */<br>
+        %%<br>
+        [aA] {return A;}<br>
+        [bB] {return B;}<br>
+        \n {return NL;}<br>
+        . {return yytext[0];}<br>
+        %%<br>
+        int yywrap()<br>
+        {<br>
+        return 1;<br>
+        }<br>
+        <br>
+        YACC Code:<br>
+        %{<br>
+        /* Definition section */<br>
+        #include<stdio.h><br>
+        #include<stdlib.h><br>
+        %}<br>
+        %token A B NL<br>
+        /* Rule Section */<br>
+        %%<br>
+        stmt: S B NL {printf("valid string\n");<br>
+            exit(0);}<br>
+        ;<br>
+        S: S A<br>
+        |<br>
+        ;<br>
+        %%<br>
+        int yyerror(char *msg)<br>
+        {<br>
+        printf("invalid string\n");<br>
+        exit(0);<br>
+        }<br>
+        //driver code<br>
+        main()<br>
+        {<br>
+        printf("enter the string\n");<br>
+        yyparse();<br>
+        }<br>
 
         <br> <br> <br>
-        3. Yacc program to recognize strings of {a^n b^n | n>=0}
-        LEX Code:
-        %{
-        /* Definition section */
-        #include "y.tab.h"
-        %}
-        /* Rule Section */
-        %%
-        [aA] {return A;}
-        [bB] {return B;}
-        \n {return NL;}
-        . {return yytext[0];}
-        %%
-        int yywrap()
-        {
-        return 1;
-        }
+        2. Yacc program to recognize strings of {a^n b | n>=5}<br>
+        LEX Code:<br>
+        %{<br>
+        /* Definition section */<br>
+        #include "y.tab.h"<br>
+        %}<br>
+        /* Rule Section */<br>
+        %%<br>
+        [aA] {return A;}<br>
+        [bB] {return B;}<br>
+        \n {return NL;}<br>
+        . {return yytext[0];}<br>
+        %%<br>
+        int yywrap()<br>
+        {<br>
+        return 1;<br>
+        }<br>
+        <br>
+        YACC Code:<br>
+        %{<br>
+        /* Definition section */<br>
+        #include<stdio.h><br>
+        #include<stdlib.h><br>
+        %}<br>
+        %token A B NL<br>
+        /* Rule Section */<br>
+        %%<br>
+        stmt: A A A A A S B NL {printf("valid string\n");<br>
+            exit(0);}<br>
+        ;<br>
+        S: S A<br>
+        |<br>
+        ;<br>
+        %%<br>
+        int yyerror(char *msg)<br>
+        {<br>
+        printf("invalid string\n");<br>
+        exit(0);<br>
+        }<br>
+        //driver code<br>
+        main()<br>
+        {<br>
+        printf("enter the string\n");<br>
+        yyparse();<br>
+        }<br>
 
-        YACC Code:
-        %{
-        /* Definition section */
-        #include<stdio.h>
-        #include<stdlib.h>
-        %}
-        %token A B NL
-        /* Rule Section */
-        %%
-        stmt: S NL { printf("valid string\n");
-            exit(0); }
-        ;
-        S: A S B |
-        ;
-        %%
-        int yyerror(char *msg)
-        {
-        printf("invalid string\n");
-        exit(0);
-        }
-        //driver code
-        main()
-        {
-        printf("enter the string\n");
-        yyparse();
-        }
+
+        <br> <br> <br>
+        3. Yacc program to recognize strings of {a^n b^n | n>=0}<br>
+        LEX Code:<br>
+        %{<br>
+        /* Definition section */<br>
+        #include "y.tab.h"<br>
+        %}<br>
+        /* Rule Section */<br>
+        %%<br>
+        [aA] {return A;}<br>
+        [bB] {return B;}<br>
+        \n {return NL;}<br>
+        . {return yytext[0];}<br>
+        %%<br>
+        int yywrap()<br>
+        {<br>
+        return 1;<br>
+        }<br>
+        <br>
+        YACC Code:<br>
+        %{<br>
+        /* Definition section */<br>
+        #include<stdio.h><br>
+        #include<stdlib.h><br>
+        %}<br>
+        %token A B NL<br>
+        /* Rule Section */<br>
+        %%<br>
+        stmt: S NL { printf("valid string\n");<br>
+            exit(0); }<br>
+        ;<br>
+        S: A S B |<br>
+        ;<br>
+        %%<br>
+        int yyerror(char *msg)<br>
+        {<br>
+        printf("invalid string\n");<br>
+        exit(0);<br>
+        }<br>
+        //driver code<br>
+        main()<br>
+        {<br>
+        printf("enter the string\n");<br>
+        yyparse();<br>
+        }<br>
 
     </p>
 </body>
