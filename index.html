@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        1. Yacc program to recognize strings of {a^n b | n>=0}
+        LEX Code:
+        %{
+        /* Definition section */
+        #include "y.tab.h"
+        %}
+        /* Rule Section */
+        %%
+        [aA] {return A;}
+        [bB] {return B;}
+        \n {return NL;}
+        . {return yytext[0];}
+        %%
+        int yywrap()
+        {
+        return 1;
+        }
+
+        YACC Code:
+        %{
+        /* Definition section */
+        #include<stdio.h>
+        #include<stdlib.h>
+        %}
+        %token A B NL
+        /* Rule Section */
+        %%
+        stmt: S B NL {printf("valid string\n");
+            exit(0);}
+        ;
+        S: S A
+        |
+        ;
+        %%
+        int yyerror(char *msg)
+        {
+        printf("invalid string\n");
+        exit(0);
+        }
+        //driver code
+        main()
+        {
+        printf("enter the string\n");
+        yyparse();
+        }
+
+
+        2. Yacc program to recognize strings of {a^n b | n>=5}
+        LEX Code:
+        %{
+        /* Definition section */
+        #include "y.tab.h"
+        %}
+        /* Rule Section */
+        %%
+        [aA] {return A;}
+        [bB] {return B;}
+        \n {return NL;}
+        . {return yytext[0];}
+        %%
+        int yywrap()
+        {
+        return 1;
+        }
+
+        YACC Code:
+        %{
+        /* Definition section */
+        #include<stdio.h>
+        #include<stdlib.h>
+        %}
+        %token A B NL
+        /* Rule Section */
+        %%
+        stmt: A A A A A S B NL {printf("valid string\n");
+            exit(0);}
+        ;
+        S: S A
+        |
+        ;
+        %%
+        int yyerror(char *msg)
+        {
+        printf("invalid string\n");
+        exit(0);
+        }
+        //driver code
+        main()
+        {
+        printf("enter the string\n");
+        yyparse();
+        }
+
+
+
+        3. Yacc program to recognize strings of {a^n b^n | n>=0}
+        LEX Code:
+        %{
+        /* Definition section */
+        #include "y.tab.h"
+        %}
+        /* Rule Section */
+        %%
+        [aA] {return A;}
+        [bB] {return B;}
+        \n {return NL;}
+        . {return yytext[0];}
+        %%
+        int yywrap()
+        {
+        return 1;
+        }
+
+        YACC Code:
+        %{
+        /* Definition section */
+        #include<stdio.h>
+        #include<stdlib.h>
+        %}
+        %token A B NL
+        /* Rule Section */
+        %%
+        stmt: S NL { printf("valid string\n");
+            exit(0); }
+        ;
+        S: A S B |
+        ;
+        %%
+        int yyerror(char *msg)
+        {
+        printf("invalid string\n");
+        exit(0);
+        }
+        //driver code
+        main()
+        {
+        printf("enter the string\n");
+        yyparse();
+        }
+
+    </p>
+</body>
+</html>
